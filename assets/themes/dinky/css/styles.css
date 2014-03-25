@@ -280,9 +280,7 @@ div.mainbody {
   position: absolute;
   left: 320px;
   right: 0;
-  top: 0;
-  bottom: 0;
-  padding: 35px 50px;
+  padding: 15px 50px 35px;
 }
 
 section {
@@ -296,60 +294,33 @@ footer {
 
 @media print, screen and (max-width: 960px) {
   
-  div.wrapper {
-    width:auto;
-    margin:0;
-  }
-  
   header, div.mainbody, footer {
     float:none;
     position:static;
     width:auto;
   }
-
-	footer {
-		border-top: 1px solid #ccc;
-		margin:0 84px 0 50px;
-		padding:0;
-	}
   
   header {
-    padding-right:320px;
+    text-align: center;
   }
   
   header a small {
     display:inline;
   }
   
-  header ul {
-    position:absolute;
-    right:130px;
-    top:84px;
+  header ul li{
+    float: left;
+    padding: 0;
+    width: 25%;
   }
 }
 
 @media print, screen and (max-width: 720px) {
+
   body {
     word-wrap:break-word;
   }
-  
-  header {
-    padding:10px 20px 0;
-		margin-right: 0;
-  }
 
-	section {
-    padding:10px 0 10px 20px;
-    margin:0 0 30px;
-  }
-
-	footer {		
-		margin: 0 0 0 30px;
-	}
-  
-  header ul, header p.view {
-    position:static;
-  }
 }
 
 @media print, screen and (max-width: 480px) {
