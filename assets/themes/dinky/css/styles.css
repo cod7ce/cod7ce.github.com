@@ -210,6 +210,9 @@ header {
 }
 
 img.header {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   padding: 2px;
   background: #fff;
   border: 0;
