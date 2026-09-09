@@ -1,17 +1,18 @@
 ---
-layout: post
-category : ruby 
-tags : [rails, aliyun]
-title: 在阿里云 (aliyun) 服务器上搭建Ruby On Rails生产环境
+title: 在阿里云 (aliyun) 服务器上搭建 Ruby On Rails 生产环境
+date: 2013-10-17 12:00:00 +0800
+categories: [ruby]
+tags: [rails, aliyun]
+redirect_from:
+  - /ruby/2013/10/17/built-ruby-on-rails-production-environment-on-aliyun
 ---
-{% include JB/setup %}
 
 最近总是在配置阿里云的服务器，遇到不少问题，现小结一下，供大家参考～～
 
 ### 1、阿里云的一键安装web全环境
 
-  - 下载一键安装web全环境 [sh.zip]() 压缩包
-  - 上传至服务器，解压、执行脚本，具体步骤详见[这里]()
+  - 下载一键安装web全环境 `sh.zip` 压缩包
+  - 上传至服务器，解压、执行脚本，具体步骤详见阿里云的官方文档
   
         $ mv sh.zip /home/tmp/ & cd /home/tmp
         $ unzip sh.zip

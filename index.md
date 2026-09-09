@@ -1,9 +1,8 @@
 ---
 layout: page
 title: 简历
-comments: false
+icon: fas fa-address-card
 ---
-{% include JB/setup %}
 
 ### 毕业院校及专业
 
@@ -50,7 +49,7 @@ java、c#、objc、ruby、php、flex、html5、javascript、css、mysql、postgr
 站点地址: [知人](https://www.zhiren.com)  [智人](https://x.zhiren.com)
 
 Mamamoon 是我为一家公司开发的电商主站。其公司麻麻木(Mamanoon)是一家专业的提供高质量家居用品的公司。
-站点地址: [http://www.mamamoon.com](http://www.mamamoon.com)
+站点地址: www.mamamoon.com（域名已失效）
 
 Maison 是本人的技术博客。该项目已开源，项目地址：[https://github.com/cod7ce/maison](https://github.com/cod7ce/maison)
 

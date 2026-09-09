@@ -1,15 +1,14 @@
 ---
-layout: post
-category : tool
-tags : [git]
 title: Git 命令使用总结
+date: 2013-04-01 12:00:00 +0800
+categories: [tool]
+tags: [git]
+redirect_from:
+  - /tool/2013/04/01/git_commands
 ---
-{% include JB/setup %}
 
 ## 别忘了
 话说Git已经学习了有半年了，刚开始以为自己会用了。可每次遇到问题都会上网去查，索性整理下常用的git命令，即可帮助新手，又可以供自己忘记时翻看，何乐而不为？
-
-<p class="lgs-input"><a href="#" class="button blue-button">Git 命令使用总结 PDF 下载</a></p>
 
 ## git基本配置
 
@@ -183,9 +182,9 @@ title: Git 命令使用总结
 
 ## 小结
 
-推荐一本书《Git权威指南》蒋鑫著 机械工业出版社 [Link]()
+推荐一本书《Git权威指南》蒋鑫著 机械工业出版社
 
-> Copyrights [纸房子@WEB](http://zhifangzi.com),Edit by cod7ce.
+> Copyrights 纸房子@WEB, Edit by cod7ce.
 
 
 

@@ -1,45 +1,57 @@
-<<<<<<< HEAD
-# Jekyll-Bootstrap
+# cod7ce.github.io
 
-The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages
+个人主页与技术博客，基于 [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 主题，由 GitHub Actions 构建后发布到 GitHub Pages。
 
-## Usage
+线上地址：<https://cod7ce.github.io>
 
-For all usage and documentation please see: <http://jekyllbootstrap.com>
+## 目录结构
 
-## Version
+| 路径 | 用途 |
+| --- | --- |
+| `index.md` | 首页，即那份简历 |
+| `_posts/` | 博客文章，文件名格式 `YYYY-MM-DD-标题.md` |
+| `_tabs/` | 侧边栏的归档、分类、标签页 |
+| `_data/contact.yml` | 侧边栏底部的社交图标 |
+| `_config.yml` | 站点配置 |
+| `.github/workflows/pages-deploy.yml` | 构建与发布流程 |
 
-0.3.0 - stable and versioned using [semantic versioning](http://semver.org/).
+## 写一篇新文章
 
-**NOTE:** 0.3.0 introduces a new theme which is not backwards compatible in the sense it won't _look_ like the old version.
-However, the actual API has not changed at all.
-You might want to run 0.3.0 in a branch to make sure you are ok with the theme design changes.
+在 `_posts/` 下新建 `YYYY-MM-DD-标题.md`：
 
-## Contributing
+```markdown
+---
+title: 文章标题
+date: 2026-09-09 20:00:00 +0800
+categories: [分类]
+tags: [标签一, 标签二]
+---
 
+正文……
+```
 
-To contribute to the framework please make sure to checkout your branch based on `jb-development`!!
-This is very important as it allows me to accept your pull request without having to publish a public version release.
+推到 `master` 后 GitHub Actions 会自动构建并发布，无需手动操作。
 
-Small, atomic Features, bugs, etc.
-Use the `jb-development` branch but note it will likely change fast as pull requests are accepted.
-Please rebase as often as possible when working.
-Work on small, atomic features/bugs to avoid upstream commits affecting/breaking your development work.
+## 本地预览
 
-For Big Features or major API extensions/edits:
-This is the one case where I'll accept pull-requests based off the master branch.
-This allows you to work in isolation but it means I'll have to manually merge your work into the next public release.
-Translation : it might take a bit longer so please be patient! (but sincerely thank you).
+需要 Ruby 3.1 以上：
 
-**Jekyll-Bootstrap Documentation Website.**
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
-The documentation website at <http://jekyllbootstrap.com> is maintained at https://github.com/plusjade/jekyllbootstrap.com
+没装 Ruby 的话可以直接用 Docker：
 
+```bash
+docker run --rm -it -v "$PWD:/site" -w /site -p 4000:4000 ruby:3.4 \
+  bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0"
+```
 
-## License
+## 升级主题
 
-[MIT](http://opensource.org/licenses/MIT)
-=======
-cod7ce.github.com
-=================
->>>>>>> bf6b411adaca619edf818e6d1dce7694190adc1e
+主题以 gem 形式引入，改 `Gemfile` 里的版本号后执行：
+
+```bash
+bundle update jekyll-theme-chirpy
+```
