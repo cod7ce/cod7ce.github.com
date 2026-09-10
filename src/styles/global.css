@@ -301,18 +301,14 @@ main { display: block; padding-bottom: 96px; }
 }
 
 /* ---------- 产品截图 ---------- */
-.shot-wrap { margin-block: 8px 44px; }
-/* 960 配 1920 的源图，正好 2 倍像素密度 */
-.shot { margin: 0 auto; max-width: 960px; }
-.shot img {
-  width: 100%; height: auto;
-  /* 图片自带透明圆角（源图 30px，缩放后约 14px），这里跟上同一条曲线 */
-  border-radius: 14px;
-  /* 不加边框：窗口自己有一圈亮边，再套一层就显得隔了 */
-  box-shadow: 0 24px 60px -32px rgba(0, 0, 0, .9);
-}
+/* 截图是带 alpha 的整窗捕获，窗口投影就在 alpha 里。
+   所以这里既不切圆角也不加投影：切了会削掉投影的四角，
+   加了会和图片自带的那道叠成两层。 */
+.shot-wrap { margin-block: 0 32px; }
+.shot { margin: 0 auto; max-width: 1040px; }
+.shot img { width: 100%; height: auto; }
 .shot figcaption {
-  margin-top: 14px;
+  margin-top: 2px;
   font-family: var(--mono);
   font-size: 12px;
   color: var(--fg-4);
