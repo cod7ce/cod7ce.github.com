@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import Terminal from '../components/Terminal.astro';
+
+const jobs = [
+  {
+    span: '2017 — 至今',
+    org: '成都彩程软件设计有限公司',
+    body: '知人 / 智人人事系统的开发与维护。知人面向大中型企业，走微信公众号 H5；智人面向小型和初创企业，走企业微信小程序。',
+    links: [
+      { label: '知人', href: 'https://www.zhiren.com' },
+      { label: '智人', href: 'https://x.zhiren.com' },
+    ],
+  },
+  {
+    span: '2013 — 2017',
+    org: '盛安德（苏州）科技发展有限公司',
+    body: '欧美外包。先后参与 CertusDelivery（仓库管理）与 PharmMD（美国医保管理）等项目。',
+    links: [],
+  },
+  {
+    span: '2012 — 2013',
+    org: '天津滨海新区规划局',
+    body: 'OA 系统与 CMS 系统开发，同时是相关项目的负责人。',
+    links: [],
+  },
+  {
+    span: '2009 — 2012',
+    org: '创富新盈（天津）网络有限公司',
+    body: '产品与网站开发，期间任技术部经理。组织开发 Flex 版大富豪软件、软件数据提供项目、iPad 版大富豪软件以及公司社区网站，负责界面设计、数据库设计与 MVC 框架设计。',
+    links: [],
+  },
+];
+
+const early = [
+  { name: 'Maison', desc: '早年的技术博客，自己写的引擎。', repo: 'cod7ce/maison' },
+  { name: 'PaperHouseLite', desc: 'Mac 下的桌面壁纸发布与分享工具。', repo: 'cod7ce/PaperHouseLite' },
+  { name: 'AnalogClock', desc: 'Mac 屏保。用图层特效模拟真实时钟，背景按壁纸库做 Ken Burns 效果。', repo: 'cod7ce/AnalogClock' },
+  { name: 'LightBox', desc: 'jQuery 插件，简单配置就能做页面弹出框。', repo: 'cod7ce/LightBox' },
+];
+
+const stack = ['ruby', 'go', 'swift', 'objc', 'java', 'c#', 'php', 'javascript', 'nodejs', 'html5', 'css', 'flex',
+               'mysql', 'postgresql', 'sqlserver', 'redis', 'mongodb', 'nginx', 'apache', 'linux', 'git'];
+---
+<Base title="关于" description="丁楠，成都。2009 年开始写生产代码，现在在成都彩程做人事系统，业余写自己用的 macOS 工具。">
+  <section class="wrap hero" style="padding-bottom:24px">
+    <h1>关于</h1>
+    <p class="hero-sub">
+      丁楠，1986 年生，天津科技大学计算机科学与技术 05 级本科。现居成都。
+      白天做人事系统，晚上写自己用的小工具。业余爱好是打篮球。
+    </p>
+    <Terminal title="cod7ce@mac: ~ — zsh">
+      <div class="cmd">git log --author=cod7ce --since=2009 --oneline | wc -l</div>
+      <div class="out dim"># 数字不重要，写了十七年了</div>
+      <div class="gap"></div>
+      <div class="cmd">echo $LANGS</div>
+      <div class="out">4 年 PHP，7 年 Ruby，其余的边用边学</div>
+    </Terminal>
+  </section>
+
+  <section class="wrap" style="margin-top:52px">
+    <p class="eyebrow">// 工作经历</p>
+    <div class="prose" style="margin-top:24px;max-width:72ch">
+      {jobs.map((j) => (
+        <div style="margin-top:26px">
+          <h3 style="margin-top:0">
+            <span style="font-family:var(--mono);font-size:13px;color:var(--fg-3);margin-right:10px">{j.span}</span>
+            {j.org}
+          </h3>
+          <p style="margin-top:6px">
+            {j.body}
+            {j.links.length > 0 && (
+              <> {j.links.map((l) => (
+                <a href={l.href} target="_blank" rel="noopener noreferrer" style="margin-left:8px">{l.label} ↗</a>
+              ))}</>
+            )}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap" style="margin-top:56px">
+    <p class="eyebrow">// 早年开源的东西</p>
+    <div class="prose" style="margin-top:24px;max-width:72ch">
+      <p>都是很多年前写的，放在这里只是留个记录，别期待还能跑起来。</p>
+      <ul>
+        {early.map((e) => (
+          <li>
+            <a href={`https://github.com/${e.repo}`} target="_blank" rel="noopener noreferrer"><strong>{e.name}</strong></a>
+            {' — '}{e.desc}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" style="margin-top:56px">
+    <p class="eyebrow">// 用过的东西</p>
+    <div class="badges" style="margin-top:22px;max-width:72ch">
+      {stack.map((s) => <span class="badge">{s}</span>)}
+    </div>
+  </section>
+
+  <section class="wrap" style="margin-top:56px">
+    <p class="eyebrow">// 联系</p>
+    <div class="phead-actions" style="margin-top:22px">
+      <a class="btn" href="mailto:cod7ce@gmail.com">cod7ce@gmail.com</a>
+      <a class="btn" href="https://github.com/cod7ce" target="_blank" rel="noopener noreferrer">github.com/cod7ce ↗</a>
+    </div>
+  </section>
+</Base>

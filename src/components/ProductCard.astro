@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { ReleaseInfo } from '../lib/releases';
+import ProductIcon from './ProductIcon.astro';
+
+interface Props { entry: CollectionEntry<'products'>; release: ReleaseInfo; }
+const { entry, release } = Astro.props;
+const d = entry.data;
+const href = `/products/${entry.id}/`;
+const download = release.downloadUrl ?? `https://github.com/${d.repo}/releases/latest`;
+---
+<article class="card" style={`--tone:${d.accent}`}>
+  <div class="card-icon"><ProductIcon src={d.icon} name={d.name} accent={d.accent} /></div>
+  <div>
+    <div class="card-head">
+      <a class="card-name" href={href}>{d.name}</a>
+      <span class="card-sub">{d.subtitle}</span>
+    </div>
+    <p class="card-tag"><b>{d.tagline}</b>。{d.blurb}</p>
+    <div class="badges">
+      <span class="badge tone">v{release.version}</span>
+      <span class="badge">{d.platform}</span>
+      {d.stack.map((s) => <span class="badge">{s}</span>)}
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-primary" href={download}>下载 <span class="sz">{release.size}</span></a>
+      <a class="btn" href={href}>详情</a>
+      <a class="btn" href={`https://github.com/${d.repo}`} target="_blank" rel="noopener noreferrer">源码 ↗</a>
+    </div>
+  </div>
+</article>

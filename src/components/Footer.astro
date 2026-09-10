@@ -1,0 +1,14 @@
+---
+const year = new Date().getFullYear();
+const built = new Date().toISOString().slice(0, 10);
+---
+<footer class="foot">
+  <div class="wrap wrap-wide foot-in">
+    <span>© {year} 丁楠 · 版本号在每次构建时从 GitHub Releases 取</span>
+    <div class="foot-links">
+      <a href="https://github.com/cod7ce" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:cod7ce@gmail.com">Email</a>
+      <span class="dim">built {built} · Astro</span>
+    </div>
+  </div>
+</footer>

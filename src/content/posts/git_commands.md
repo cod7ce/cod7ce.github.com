@@ -3,8 +3,6 @@ title: Git 命令使用总结
 date: 2013-04-01 12:00:00 +0800
 categories: [tool]
 tags: [git]
-redirect_from:
-  - /tool/2013/04/01/git_commands
 ---
 
 ## 别忘了

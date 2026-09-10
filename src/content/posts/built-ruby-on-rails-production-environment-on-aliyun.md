@@ -3,8 +3,6 @@ title: 在阿里云 (aliyun) 服务器上搭建 Ruby On Rails 生产环境
 date: 2013-10-17 12:00:00 +0800
 categories: [ruby]
 tags: [rails, aliyun]
-redirect_from:
-  - /ruby/2013/10/17/built-ruby-on-rails-production-environment-on-aliyun
 ---
 
 最近总是在配置阿里云的服务器，遇到不少问题，现小结一下，供大家参考～～

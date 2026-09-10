@@ -1,0 +1,15 @@
+---
+interface Props { src?: string; name: string; accent: string; }
+const { src, name, accent } = Astro.props;
+---
+{src ? (
+  <img src={src} alt={`${name} 图标`} width="112" height="112" loading="lazy" />
+) : (
+  /* TouchGuard 是菜单栏工具，没有 App 图标资源，这里画一个：触控板 + 一道拦截线 */
+  <svg viewBox="0 0 48 48" width="100%" height="100%" role="img" aria-label={`${name} 图标`}>
+    <rect x="9" y="12" width="30" height="24" rx="5" fill="none" stroke={accent} stroke-width="2.4" opacity=".85"/>
+    <line x1="24" y1="12" x2="24" y2="28" stroke={accent} stroke-width="1.6" opacity=".4"/>
+    <line x1="9" y1="28" x2="39" y2="28" stroke={accent} stroke-width="1.6" opacity=".4"/>
+    <line x1="13" y1="39" x2="35" y2="9" stroke="#ef5b4c" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+)}

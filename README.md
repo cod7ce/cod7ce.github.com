@@ -1,57 +1,61 @@
 # cod7ce.github.io
 
-个人主页与技术博客，基于 [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 主题，由 GitHub Actions 构建后发布到 GitHub Pages。
+产品站。三个自己每天在用的 macOS 工具，加一页简历。
 
 线上地址：<https://cod7ce.github.io>
 
-## 目录结构
+Astro 构建，GitHub Actions 部署到 GitHub Pages。
+
+## 结构
 
 | 路径 | 用途 |
 | --- | --- |
-| `index.md` | 首页，即那份简历 |
-| `_posts/` | 博客文章，文件名格式 `YYYY-MM-DD-标题.md` |
-| `_tabs/` | 侧边栏的归档、分类、标签页 |
-| `_data/contact.yml` | 侧边栏底部的社交图标 |
-| `_config.yml` | 站点配置 |
-| `.github/workflows/pages-deploy.yml` | 构建与发布流程 |
+| `src/content/products/*.md` | 每个产品一个文件。frontmatter 是元数据，正文是详情页内容 |
+| `src/content/posts/*.md` | 2013 年旧站的文章存档。不在导航里，但老地址仍可访问 |
+| `src/pages/index.astro` | 首页 |
+| `src/pages/about.astro` | 关于（简历） |
+| `src/pages/products/[slug].astro` | 产品详情页模板 |
+| `src/lib/releases.ts` | 构建时从 GitHub Releases 取版本号和安装包体积 |
+| `src/styles/global.css` | 全站设计系统 |
 
-## 写一篇新文章
+## 加一个产品
 
-在 `_posts/` 下新建 `YYYY-MM-DD-标题.md`：
+在 `src/content/products/` 下新建一个 `.md`：
 
 ```markdown
 ---
-title: 文章标题
-date: 2026-09-09 20:00:00 +0800
-categories: [分类]
-tags: [标签一, 标签二]
+order: 4                      # 首页排序
+name: 产品名
+subtitle: 英文名或副标题
+tagline: 一句话说清它做什么
+blurb: 补充半句，跟在 tagline 后面显示
+icon: /icons/xxx.png          # 可选，没有则画一个占位图形
+accent: "#4ade80"             # 该产品的主色，详情页整页跟着变
+repo: cod7ce/xxx
+platform: macOS
+stack: [Swift]
+license: MIT
+version: "0.1.0"              # 兜底值，取不到 Release 时用
+assetPattern: "\\.zip$"       # 匹配 Release 里哪个安装包
+downloadSize: 1.0 MB          # 同样是兜底值
 ---
 
-正文……
+正文用 Markdown 写，`##` 二级标题会自动带上终端风格的 `##` 前缀。
 ```
 
-推到 `master` 后 GitHub Actions 会自动构建并发布，无需手动操作。
+版本号和体积每次构建时从 GitHub Releases API 现取，frontmatter 里的值只在取不到时兜底。
+工作流每天定时重建一次，所以发了新 Release 不用手动改站点。
 
-## 本地预览
-
-需要 Ruby 3.1 以上：
+## 本地开发
 
 ```bash
-bundle install
-bundle exec jekyll serve
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # 产物在 dist/
+npm run preview
 ```
 
-没装 Ruby 的话可以直接用 Docker：
+## 设计
 
-```bash
-docker run --rm -it -v "$PWD:/site" -w /site -p 4000:4000 ruby:3.4 \
-  bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0"
-```
-
-## 升级主题
-
-主题以 gem 形式引入，改 `Gemfile` 里的版本号后执行：
-
-```bash
-bundle update jekyll-theme-chirpy
-```
+暗色终端风格，只有一套主题。配色、字体、间距全部在 `src/styles/global.css` 顶部的
+自定义属性里，`--tone` 是会被每个产品页覆盖的强调色。

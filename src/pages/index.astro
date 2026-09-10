@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Terminal from '../components/Terminal.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { latestRelease } from '../lib/releases';
+
+const products = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
+
+const cards = await Promise.all(
+  products.map(async (entry) => ({
+    entry,
+    release: await latestRelease(entry.data.repo, entry.data.assetPattern, {
+      version: entry.data.version,
+      size: entry.data.downloadSize,
+    }),
+  })),
+);
+---
+<Base
+  title="cod7ce"
+  description="丁楠的产品站。三个自己每天在用的 macOS 工具：四象限任务管理、给孩子的离线 Scratch、打字时屏蔽触控板。全部开源。"
+>
+  <section class="wrap wrap-wide hero">
+    <h1>自己被烦到的问题，<br />自己写个工具<em>解决</em>。</h1>
+    <p class="hero-sub">
+      三个 macOS 上的小东西，都不打算做成生意，只是我自己每天在用。
+      源码全公开，安装包直接从 GitHub Releases 下，没有账号，没有订阅，没有遥测。
+    </p>
+
+    <Terminal title="cod7ce@mac: ~/Workspace/Personal — zsh">
+      <div class="cmd">whoami</div>
+      <div class="out">丁楠 · 成都 · <span class="hi">2009 年开始写生产代码</span></div>
+      <div class="gap"></div>
+      <div class="cmd">ls</div>
+      <div class="out">FourQuadrants/&nbsp;&nbsp; kid-scratch-app/&nbsp;&nbsp; TouchGuard/</div>
+      <div class="gap"></div>
+      <div class="cmd">cat WHY</div>
+      <div class="out">同一个问题每天烦我第三次的时候，写工具就比忍着划算了。</div>
+      <div class="dim"># 三个都还在改，版本号是这个页面构建时现取的。</div>
+    </Terminal>
+  </section>
+
+  <section class="wrap wrap-wide" id="products">
+    <p class="eyebrow">// products</p>
+    <div class="cards">
+      {cards.map(({ entry, release }) => <ProductCard entry={entry} release={release} />)}
+    </div>
+  </section>
+
+  <section class="wrap wrap-wide" style="margin-top:64px">
+    <p class="eyebrow">// 共同点</p>
+    <div class="prose" style="margin-top:22px;max-width:72ch">
+      <p>
+        三个项目长得完全不一样 —— 一个 SwiftUI，一个 Electron，一个两万行不到的 Swift 事件过滤器 ——
+        但有几条是一样的。
+      </p>
+      <ul>
+        <li><strong>数据在你自己机器上。</strong>没有服务端，没有账号体系，也就没有什么可以泄露的。</li>
+        <li>
+          <strong>自动更新都是手写的。</strong>Sparkle 和 electron-updater 都要求 Developer ID 签名，
+          个人项目没有，于是三个都改成直接读 GitHub Releases API 自己下载替换。
+        </li>
+        <li><strong>发布靠打 tag。</strong>推一个 <code>v*</code> 标签，CI 构建、打包、传 Release，一条龙。</li>
+      </ul>
+      <p>
+        踩过的坑都写在各自的详情页里了 —— 包括那个「素材库点了没反应，也没有任何报错」的
+        Web Worker 悬挂，找了整整一晚上。
+      </p>
+    </div>
+  </section>
+</Base>

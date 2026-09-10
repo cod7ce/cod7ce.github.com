@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  tone?: string;
+}
+const { title, description, tone } = Astro.props;
+const full = title === 'cod7ce' ? 'cod7ce · 自己用的工具' : `${title} · cod7ce`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#08090b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={full} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body style={tone ? `--tone:${tone}` : undefined}>
+    <Nav />
+    <main><slot /></main>
+    <Footer />
+  </body>
+</html>

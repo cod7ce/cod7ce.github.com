@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Terminal from '../components/Terminal.astro';
+---
+<Base title="404" description="这个地址不存在。">
+  <section class="wrap hero">
+    <h1>404</h1>
+    <p class="hero-sub">这个地址下面什么都没有。</p>
+    <Terminal title="cod7ce@mac: ~ — zsh">
+      <div class="cmd">cat {Astro.url.pathname}</div>
+      <div class="out">cat: No such file or directory</div>
+      <div class="gap"></div>
+      <div class="cmd">cd /</div>
+    </Terminal>
+    <p style="margin-top:28px"><a class="btn btn-primary" href="/">回首页</a></p>
+  </section>
+</Base>

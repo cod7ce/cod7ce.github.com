@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const date = d.date.toISOString().slice(0, 10);
+---
+<Base title={d.title} description={`${d.title}（${date} 旧文存档）`}>
+  <header class="wrap phead" style="padding-bottom:18px">
+    <h1>{d.title}</h1>
+    <div class="badges" style="margin-top:16px">
+      <span class="badge">{date}</span>
+      {d.categories.map((c) => <span class="badge">{c}</span>)}
+      {d.tags.map((t) => <span class="badge">#{t}</span>)}
+    </div>
+  </header>
+
+  <div class="wrap">
+    <blockquote class="prose" style="max-width:68ch;margin-bottom:36px;border-left:2px solid var(--line-2);padding-left:16px;color:var(--fg-3)">
+      这是旧站留下的存档，写于 {date.slice(0, 4)} 年。当时的命令、版本和链接大多已经过时，
+      原样保留只是为了不让老地址失效。
+    </blockquote>
+    <article class="prose"><Content /></article>
+    <p style="margin-top:56px"><a class="btn" href="/">← 回首页</a></p>
+  </div>
+</Base>

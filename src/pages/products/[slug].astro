@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProductIcon from '../../components/ProductIcon.astro';
+import { latestRelease } from '../../lib/releases';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+const release = await latestRelease(d.repo, d.assetPattern, {
+  version: d.version,
+  size: d.downloadSize,
+});
+const download = release.downloadUrl ?? `https://github.com/${d.repo}/releases/latest`;
+---
+<Base title={`${d.name} · ${d.subtitle}`} description={`${d.tagline}。${d.blurb}`} tone={d.accent}>
+  <header class="wrap phead">
+    <div class="phead-top">
+      <div class="phead-icon"><ProductIcon src={d.icon} name={d.name} accent={d.accent} /></div>
+      <div>
+        <h1>{d.name}</h1>
+        <div class="phead-sub">{d.subtitle}</div>
+      </div>
+    </div>
+
+    <p class="phead-tag">{d.tagline}</p>
+
+    <div class="badges">
+      <span class="badge tone">v{release.version}</span>
+      <span class="badge">{d.platform}</span>
+      {d.stack.map((s) => <span class="badge">{s}</span>)}
+      <span class="badge">{d.license}</span>
+    </div>
+
+    <div class="phead-actions">
+      <a class="btn btn-primary" href={download}>下载 <span class="sz">{release.size}</span></a>
+      <a class="btn" href={`https://github.com/${d.repo}`} target="_blank" rel="noopener noreferrer">源码 ↗</a>
+      <a class="btn" href={`https://github.com/${d.repo}/releases`} target="_blank" rel="noopener noreferrer">全部版本 ↗</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <article class="prose"><Content /></article>
+    <p style="margin-top:56px">
+      <a class="btn" href="/">← 回到全部产品</a>
+    </p>
+  </div>
+</Base>

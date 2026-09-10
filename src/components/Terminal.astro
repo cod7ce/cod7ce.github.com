@@ -1,0 +1,14 @@
+---
+interface Props { title?: string; }
+const { title = 'cod7ce@mac — zsh' } = Astro.props;
+---
+<div class="term">
+  <div class="term-bar">
+    <span class="term-dot" style="background:#ef5b4c"></span>
+    <span class="term-dot" style="background:#f5a524"></span>
+    <span class="term-dot" style="background:#4ade80"></span>
+    <span class="term-title">{title}</span>
+    <span style="width:44px"></span>
+  </div>
+  <div class="term-body"><slot /></div>
+</div>

@@ -1,0 +1,18 @@
+---
+const path = Astro.url.pathname;
+const links = [
+  { href: '/', label: '产品' },
+  { href: '/about/', label: '关于' },
+];
+---
+<nav class="nav">
+  <div class="wrap wrap-wide nav-in">
+    <a class="brand" href="/">cod7ce<span class="caret" aria-hidden="true"></span></a>
+    <div class="nav-links">
+      {links.map((l) => (
+        <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a class="ext" href="https://github.com/cod7ce" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</nav>
