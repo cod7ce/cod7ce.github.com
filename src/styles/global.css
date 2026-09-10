@@ -306,16 +306,13 @@ main { display: block; padding-bottom: 96px; }
 .shot { margin: 0 auto; max-width: 960px; }
 .shot img {
   width: 100%; height: auto;
-  border-radius: var(--r);
-  border: 1px solid var(--line-2);
-  background: var(--bg-1);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .04) inset,
-    0 32px 70px -30px rgba(0, 0, 0, .95),
-    0 0 60px -30px color-mix(in srgb, var(--tone) 55%, transparent);
+  /* 图片自带透明圆角（源图 30px，缩放后约 14px），这里跟上同一条曲线 */
+  border-radius: 14px;
+  /* 不加边框：窗口自己有一圈亮边，再套一层就显得隔了 */
+  box-shadow: 0 24px 60px -32px rgba(0, 0, 0, .9);
 }
 .shot figcaption {
-  margin-top: 12px;
+  margin-top: 14px;
   font-family: var(--mono);
   font-size: 12px;
   color: var(--fg-4);
