@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import ProductIcon from '../../components/ProductIcon.astro';
 import { latestRelease } from '../../lib/releases';
@@ -44,6 +45,22 @@ const download = release.downloadUrl ?? `https://github.com/${d.repo}/releases/l
       <a class="btn" href={`https://github.com/${d.repo}/releases`} target="_blank" rel="noopener noreferrer">全部版本 ↗</a>
     </div>
   </header>
+
+  {d.screenshot && (
+    <div class="wrap wrap-wide shot-wrap">
+      <figure class="shot">
+        <Image
+          src={d.screenshot}
+          alt={d.screenshotAlt ?? `${d.name} 界面截图`}
+          widths={[640, 960, 1440, 1920]}
+          sizes="(max-width: 700px) 100vw, 960px"
+          quality={82}
+          loading="eager"
+        />
+        {d.screenshotCaption && <figcaption>{d.screenshotCaption}</figcaption>}
+      </figure>
+    </div>
+  )}
 
   <div class="wrap">
     <article class="prose"><Content /></article>
