@@ -304,10 +304,10 @@ main { display: block; padding-bottom: 96px; }
 /* 截图是带 alpha 的整窗捕获，窗口投影就在 alpha 里。
    所以这里既不切圆角也不加投影：切了会削掉投影的四角，
    加了会和图片自带的那道叠成两层。 */
-/* 截图比正文栏宽：应用窗口是 1445pt，挤进 1040 只能按 67% 显示，文字就糊了。
-   放到 1240 能提到 80%，两侧溢出到页面留白里。 */
-.shot-wrap { max-width: 1320px; margin-block: 0 32px; }
-.shot { margin: 0 auto; max-width: 1240px; }
+/* 截图比正文栏宽。收起侧边栏后窗口是 1283pt，放到 1360 的槽位里
+   应用按 97% 显示，基本等于原生尺寸，文字才不糊。 */
+.shot-wrap { max-width: 1440px; margin-block: 0 32px; }
+.shot { margin: 0 auto; max-width: 1360px; }
 .shot img { width: 100%; height: auto; }
 .shot figcaption {
   margin-top: 2px;

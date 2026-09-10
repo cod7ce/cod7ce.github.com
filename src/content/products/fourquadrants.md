@@ -14,8 +14,8 @@ version: "0.17.1"
 assetPattern: "\\.zip$"
 downloadSize: 3.3 MB
 screenshot: ../../assets/screenshots/fourquadrants-overview.png
-screenshotAlt: 肆的总览界面。左侧是导航和标签列表，右侧把本周任务分在四个象限里，每个象限有独立的进度条、子任务和已完成折叠区
-screenshotCaption: 总览 · 「终端」深色主题 · 底部常驻本地保存状态
+screenshotAlt: 肆的总览界面。本周任务分在四个象限里，每个象限有独立的进度条、多级子任务和已完成折叠区，顶部是本周进度
+screenshotCaption: 总览 · 「终端」深色主题 · 侧边栏已收起
 ---
 
 ## 为什么会有它
