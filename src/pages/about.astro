@@ -4,7 +4,13 @@ import Terminal from '../components/Terminal.astro';
 
 const jobs = [
   {
-    span: '2017 — 至今',
+    span: '2022 — 至今',
+    org: 'ONES',
+    body: '企业级项目与研发管理平台的开发，Go 技术栈。',
+    links: [{ label: 'ones.cn', href: 'https://ones.cn' }],
+  },
+  {
+    span: '2017 — 2022',
     org: '成都彩程软件设计有限公司',
     body: '知人 / 智人人事系统的开发与维护。知人面向大中型企业，走微信公众号 H5；智人面向小型和初创企业，走企业微信小程序。',
     links: [
@@ -39,22 +45,22 @@ const early = [
   { name: 'LightBox', desc: 'jQuery 插件，简单配置就能做页面弹出框。', repo: 'cod7ce/LightBox' },
 ];
 
-const stack = ['ruby', 'go', 'swift', 'objc', 'java', 'c#', 'php', 'javascript', 'nodejs', 'html5', 'css', 'flex',
+const stack = ['go', 'ruby', 'swift', 'objc', 'java', 'c#', 'php', 'javascript', 'nodejs', 'html5', 'css', 'flex',
                'mysql', 'postgresql', 'sqlserver', 'redis', 'mongodb', 'nginx', 'apache', 'linux', 'git'];
 ---
-<Base title="关于" description="丁楠，成都。2009 年开始写生产代码，现在在成都彩程做人事系统，业余写自己用的 macOS 工具。">
+<Base title="关于" description="丁楠，成都。2009 年开始写生产代码，现在在 ONES 用 Go 做研发管理平台，业余写自己用的 macOS 工具。">
   <section class="wrap hero" style="padding-bottom:24px">
     <h1>关于</h1>
     <p class="hero-sub">
       丁楠，1986 年生，天津科技大学计算机科学与技术 05 级本科。现居成都。
-      白天做人事系统，晚上写自己用的小工具。业余爱好是打篮球。
+      白天在 ONES 写 Go，晚上写自己用的小工具。业余爱好是打篮球。
     </p>
     <Terminal title="cod7ce@mac: ~ — zsh">
       <div class="cmd">git log --author=cod7ce --since=2009 --oneline | wc -l</div>
       <div class="out dim"># 数字不重要，写了十七年了</div>
       <div class="gap"></div>
       <div class="cmd">echo $LANGS</div>
-      <div class="out">4 年 PHP，7 年 Ruby，其余的边用边学</div>
+      <div class="out">4 年 PHP，7 年 Ruby，这几年主要写 Go</div>
     </Terminal>
   </section>
 
