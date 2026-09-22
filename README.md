@@ -1,6 +1,6 @@
 # cod7ce.github.io
 
-产品站。三个自己每天在用的 macOS 工具，加一页简历。
+产品站。四个 macOS 工具，加一页简历。
 
 线上地址：<https://cod7ce.github.io>
 
